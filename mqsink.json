@@ -1,0 +1,17 @@
+{
+"name": "local-mqsink-mac", 
+"config": {
+"connector.class":"MQSinkConnector", 
+"key.converter":"org.apache.kafka.connect.storage.StringConverter",
+"value.converter":"org.apache.kafka.connect.storage.StringConverter",
+"mq.hostname":"ec2-13-52-66-215.us-west-1.compute.amazonaws.com",
+"mq.channel":"SYSTEM.DEF.SVRCONN",
+"mq.port":"1414",
+"mq.queue.manager":"QM.MCOX",
+"mq.user":"mqm",
+"mq.password":"mqm",
+"mq.queue":"TEST.QUEUE",
+"topics":"mq.sink",
+"tasks.max":"1"
+}
+}
