@@ -29,7 +29,7 @@ public class MQSinkConnector extends SinkConnector {
    */
 
   private static Logger log = LoggerFactory.getLogger(MQSinkConnector.class);
-  private MQSinkConnectorConfig config;
+  private Map<String, String> settings;
 
   @Override
   public List<Map<String, String>> taskConfigs(int maxTasks) {
@@ -41,6 +41,9 @@ public class MQSinkConnector extends SinkConnector {
      * in a database, you can assign a table per task.
      */
 
+    log.info("Setting task configurations for {} workers.", maxTasks);
+
+    // One set-up one task for now, multiple tasks TBD
     ArrayList<Map<String, String>> configs = new ArrayList<>();
     Map<String, String> config = new HashMap<>();
 
@@ -50,11 +53,8 @@ public class MQSinkConnector extends SinkConnector {
     return configs;
   }
 
-  Map<String, String> settings;
-
   @Override
   public void start(Map<String, String> map) {
-    this.config = new MQSinkConnectorConfig(map);
     this.settings = map;
 
     //TODO: Add things you need to do to setup your connector.
