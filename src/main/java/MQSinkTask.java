@@ -65,7 +65,7 @@ public class MQSinkTask extends SinkTask {
 
     for (SinkRecord record : records) {
       try {
-        log.trace("Writing message to QM: {} and Q: {} = {}", settings.get(MQSinkConnectorConfig.MQ_QUEUE_MANAGER_CONFIG),
+        log.info("Writing message to QM: {} and Q: {} = {}", settings.get(MQSinkConnectorConfig.MQ_QUEUE_MANAGER_CONFIG),
                 settings.get(MQSinkConnectorConfig.MQ_QUEUE_CONFIG),
                 record.value().toString());
         outMsg.writeString(record.value().toString());
